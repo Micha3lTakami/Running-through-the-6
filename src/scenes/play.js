@@ -21,10 +21,11 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 0
         }
-        // show menu text
+        /*
         this.add.text(game.config.width/2, game.config.height/2, 'PLAY', menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000';
+        menuConfig.color = '#000'; */
+        this.city = this.add.tileSprite(0, 0, 960, 640, 'Background').setOrigin(0, 0);
         
         
 
@@ -34,6 +35,8 @@ class Play extends Phaser.Scene {
     // update()
     // menu update function
     update() {
+        this.city.tilePositionX += 5;
+    
     }
     
 }
