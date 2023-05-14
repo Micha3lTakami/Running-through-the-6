@@ -7,7 +7,7 @@ class Play extends Phaser.Scene {
     // create()
     // create menu scene
     create() {
-        
+        this.sound.play('gameMusic');
         // menu text configuration
         let menuConfig = {
             fontFamily: 'Courier',
@@ -26,6 +26,8 @@ class Play extends Phaser.Scene {
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000'; */
         this.city = this.add.tileSprite(0, 0, 960, 640, 'Background').setOrigin(0, 0);
+        this.proto = new protagonist(this,w/2, h/2, 'protagonist');
+        this.proto.setScale(2);
         
         
 
@@ -35,7 +37,8 @@ class Play extends Phaser.Scene {
     // update()
     // menu update function
     update() {
-        this.city.tilePositionX += 5;
+        this.proto.update();
+        this.city.tilePositionX += 4;
     
     }
     

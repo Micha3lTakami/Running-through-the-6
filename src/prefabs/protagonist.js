@@ -12,7 +12,7 @@ class protagonist extends Phaser.Physics.Arcade.Sprite {
         this.body.gravity.y = 200;
 
         // set the maximum velocity of the sprite
-        this.maxVelocity = 200;
+        this.body.maxVelocity.x = 200;
 
         // create cursor keys for input
         this.cursors = scene.input.keyboard.createCursorKeys();
@@ -20,21 +20,21 @@ class protagonist extends Phaser.Physics.Arcade.Sprite {
         // create animations
         scene.anims.create({
             key: 'left',
-            frames: scene.anims.generateFrameNumbers(spritesheet, { start: 4, end: 6 }),
+            frames: scene.anims.generateFrameNumbers(spritesheet, { start: 6, end: 8 }),
             frameRate: 10,
             repeat: -1
         });
 
         scene.anims.create({
             key: 'right',
-            frames: scene.anims.generateFrameNumbers(spritesheet, { start: 7, end: 9 }),
+            frames: scene.anims.generateFrameNumbers(spritesheet, { start: 3, end: 5 }),
             frameRate: 10,
             repeat: -1
         });
 
         scene.anims.create({
             key: 'stay',
-            frames: scene.anims.generateFrameNumbers(spritesheet, { start: 1, end: 3 }),
+            frames: scene.anims.generateFrameNumbers(spritesheet, { start: 0, end: 2 }),
             frameRate: 10,
             repeat: -1
         });
@@ -46,43 +46,30 @@ class protagonist extends Phaser.Physics.Arcade.Sprite {
         // set the collision detection for the sprite
         this.setCollideWorldBounds(true);
         this.body.onWorldBounds = true;
-        this.body.world.on('worldbounds', this.onWorldBounds, this);
     }
 
     update() {
-        // update the wrappedTime value if the 'r' key is held down
-        if (this.cursors.r.isDown) {
-            this.wrappedTime += 1;
-            this.anims.play('stay', true);
-            this.setVelocityX(0);
+        // check for keyboard input
+        if (this.cursors.left.isDown) {
+            this.body.setVelocityX(-100);
+            this.anims.play('left', true);
+        } else if (this.cursors.right.isDown) {
+            this.body.setVelocityX(100);
+            this.anims.play('right', true);
         } else {
-            // update the sprite's movement if the 'r' key is not held down
-            if (this.cursors.left.isDown) {
-                this.anims.play('left', true);
-                this.setVelocityX(-this.maxVelocity);
-            } else if (this.cursors.right.isDown) {
-                this.anims.play('right', true);
-                this.setVelocityX(this.maxVelocity);
-            } else {
-                this.anims.play('stay', true);
-                this.setVelocityX(0);
-            }
-
-            // jump if the 'up' arrow key is pressed and the sprite can jump
-            if (Phaser.Input.Keyboard.JustDown(this.cursors.up) && this.canJump) {
-                this.setVelocityY(-200);
-                this.canJump = false;
-            }
+            this.body.setVelocityX(0);
+            this.anims.play('stay', true);
         }
-    }
 
-    // function to handle the collision with world bounds
-    onWorldBounds(body) {
-        if (body.blocked.up || body.blocked.down || body.blocked.left || body.blocked.right) {
-            // if the sprite hits any border, the game ends
-            this.scene.scene.start('gameOverScene');
+        // check if the up key is pressed and the sprite can jump
+        if (this.cursors.up.isDown && this.canJump) {
+            this.body.setVelocityY(-300);
+            this.canJump = false;
         }
-        if (body.blocked.down) {
+
+        // update wrappedTime and canJump variables
+        this.wrappedTime += this.scene.game.loop.delta;
+        if (this.wrappedTime > 1000) {
             this.canJump = true;
         }
     }

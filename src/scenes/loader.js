@@ -25,7 +25,7 @@ class Loader extends Phaser.Scene {
         this.load.image('Title_Logo', './assets/images/menuLogo.png');
         
         // load spritesheets 
-        this.load.spritesheet('protagonist', './assets/images/protagonist.png', {frameWidth: 16, frameHeight: 32, startFrame: 1, endFrame: 9});
+        this.load.spritesheet('protagonist', './assets/images/protagonist.png', {frameWidth: 16, frameHeight: 25, startFrame: 0, endFrame: 8});
         this.load.spritesheet('iceman', './assets/images/iceman.png', {frameWidth: 27, frameHeight: 25, startFrame: 1, endFrame: 3});
         
         // change scene upon completion
