@@ -19,16 +19,16 @@ class iceman extends Phaser.Physics.Arcade.Sprite {
 
         // start 'attack' animation and set callback function to loop animation
         this.anims.play('attack');
-        /*this.anims.events.on('animationcomplete', () => {
-            this.anims.play('attack');
-        });*/
 
         // detect collisions with protagonist and pause scene when collision occurs
         scene.physics.add.collider(this, scene.proto, () => {
             scene.physics.pause();
-            scene.city.tilePositionX -= 0;
+            //scene.proto.destroy();
+            this.destroy();
             scene.sound.stopAll();
+            scene.gameOver = true;
         });
+  
     }
 
     update() {

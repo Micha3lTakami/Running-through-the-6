@@ -26,7 +26,7 @@ class Start extends Phaser.Scene {
         }
         this.cameras.main.setBackgroundColor('rgba(221, 102, 85, 0.87)');
         this.add.text(game.config.width/2, game.config.height/2, 'Press (ENTER) to continue', startConfig).setOrigin(0.5);
-        
+        this.add.text(game.config.width/2, game.config.height*.75, 'Game Created by Michael Takami 2023', startConfig).setOrigin(0.5);
         
 
         // define keys

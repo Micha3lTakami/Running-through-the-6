@@ -56,6 +56,7 @@ class protagonist extends Phaser.Physics.Arcade.Sprite {
 
         // add rainbow tint effect
         this.rainbowTint = false;
+ 
     }
 
     update() {
