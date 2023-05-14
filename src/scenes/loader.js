@@ -19,6 +19,7 @@ class Loader extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/sounds/menu_select.wav');
         this.load.audio('gameMusic', './assets/sounds/6BackgrndMusic.wav');
         this.load.audio('deathNoise', './assets/sounds/drake-death.wav');
+        this.load.audio('startButton','./assets/sounds/button.mp3' )
         this.load.image('MenuBackground', './assets/images/6MenuBackground.png');
         this.load.image('MenuInstructions', './assets/images/menuInstructions.png')
         this.load.image('Background', './assets/images/TorontoBCKGRND.png')

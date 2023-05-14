@@ -23,9 +23,11 @@ class iceman extends Phaser.Physics.Arcade.Sprite {
         // detect collisions with protagonist and pause scene when collision occurs
         scene.physics.add.collider(this, scene.proto, () => {
             scene.physics.pause();
+            scene.sound.stopAll();
+            scene.sound.play('deathNoise');
             //scene.proto.destroy();
             this.destroy();
-            scene.sound.stopAll();
+            
             scene.gameOver = true;
         });
   

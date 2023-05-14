@@ -38,7 +38,7 @@ class Start extends Phaser.Scene {
     // menu update function
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyENTER)) {
-            this.sound.play('sfx_select');
+            this.sound.play('startButton');
             this.cameras.main.fadeOut(1000,0,0,0);
             this.time.delayedCall(1100, () =>{
                 // restyle border for next scene
