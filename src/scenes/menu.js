@@ -25,7 +25,7 @@ class Menu extends Phaser.Scene {
         let expertText = this.add.text(w*.83, h/3.25 + 5, 'EXPERT',menuConfig).setOrigin(0.5);
         
         
-        /*
+        /* RIP :(((
         let fullScreen = this.add.text(w-15, h-15, "📺")
             .setStyle({ fontSize: `${2 * this.s}px` })
             .setInteractive({useHandCursor: true})
@@ -39,6 +39,7 @@ class Menu extends Phaser.Scene {
                 }
             });
         */
+
         // define keys
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
