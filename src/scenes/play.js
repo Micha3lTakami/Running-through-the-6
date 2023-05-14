@@ -2,45 +2,42 @@ class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
     }
-    
 
     // create()
-    // create menu scene
+    // create play scene
     create() {
         let gameMusic = this.sound.add('gameMusic', { loop: true });
         gameMusic.play();
-        // menu text configuration
-        let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
-            allign: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            },
-            fixedWidth: 0
-        }
-        /*
-        this.add.text(game.config.width/2, game.config.height/2, 'PLAY', menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000'; */
-        this.city = this.add.tileSprite(0, 0, 960, 640, 'Background').setOrigin(0, 0);
-        this.proto = new protagonist(this,w/2, h/2, 'protagonist');
-        this.proto.setScale(2);
-        
         
 
+        // create city background
+        this.city = this.add.tileSprite(0, 0, 960, 640, 'Background').setOrigin(0, 0);
+        
+        // create protagonist object
+        this.proto = new protagonist(this, this.game.config.width / 2, this.game.config.height / 2, 'protagonist');
+        this.proto.setScale(2);
+
+        // create iceman objects using a timer event
+        this.icemanTimer = this.time.addEvent({
+            delay: 1000,
+            callback: () => {
+                let newIceman = new iceman(this, 'iceman');
+                newIceman.setScale(3);
+            },
+            loop: true
+        });
+        let gameOver = false;
+    }
+    gameOver(){
 
     }
-
     // update()
     // menu update function
     update() {
         this.proto.update();
         this.city.tilePositionX += 5;
-    
+        if(this.gameOver == true){
+            this.gameOver();
+        }
     }
-    
 }
