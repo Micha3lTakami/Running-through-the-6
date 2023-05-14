@@ -36,4 +36,5 @@ class Loader extends Phaser.Scene {
         }, this);
 
     }
+  
 }

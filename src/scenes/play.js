@@ -7,7 +7,8 @@ class Play extends Phaser.Scene {
     // create()
     // create menu scene
     create() {
-        this.sound.play('gameMusic');
+        let gameMusic = this.sound.add('gameMusic', { loop: true });
+        gameMusic.play();
         // menu text configuration
         let menuConfig = {
             fontFamily: 'Courier',
@@ -38,7 +39,7 @@ class Play extends Phaser.Scene {
     // menu update function
     update() {
         this.proto.update();
-        this.city.tilePositionX += 4;
+        this.city.tilePositionX += 5;
     
     }
     

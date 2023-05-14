@@ -24,6 +24,21 @@ class Menu extends Phaser.Scene {
         let amateurText = this.add.text(w/7, h/3.25 + 5, 'AMATEUR', menuConfig).setOrigin(0.5);
         let expertText = this.add.text(w*.83, h/3.25 + 5, 'EXPERT',menuConfig).setOrigin(0.5);
         
+        
+        /*
+        let fullScreen = this.add.text(w-15, h-15, "📺")
+            .setStyle({ fontSize: `${2 * this.s}px` })
+            .setInteractive({useHandCursor: true})
+            .on('pointerover', () => this.showMessage('Fullscreen?'))
+            .on('pointerout', () => this.stopMessage())
+            .on('pointerdown', () => {
+                if (this.scale.isFullscreen) {
+                    this.scale.stopFullscreen();
+                } else {
+                    this.scale.startFullscreen();
+                }
+            });
+        */
         // define keys
         keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
@@ -41,6 +56,7 @@ class Menu extends Phaser.Scene {
           }
           else if(Phaser.Input.Keyboard.JustDown(keyRIGHT)){
             enemyVelocity += 50;
+            pushBack -= 50;
             this.sound.play('sfx_select');
             this.cameras.main.fadeOut(1000,0,0,0);
             this.time.delayedCall(1100, () =>{

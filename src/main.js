@@ -13,6 +13,7 @@ let config = {
     width: 960,
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH
+        //mode: Phaser.Scale.FIT,
     },
     physics: {
         default: 'arcade',
@@ -20,7 +21,7 @@ let config = {
             //debug: true,
             gravity: {
                 x: 0,
-                y: 0
+                y: 1100
             }
         }
     },
@@ -29,6 +30,7 @@ let config = {
 
 // define game
 let game = new Phaser.Game(config);
+
 
 // reserve keyboard variables
 let keyUP, keyLEFT, keyRIGHT, keyENTER, keyR;
@@ -40,4 +42,6 @@ let w = game.config.width;
 let h = game.config.height;
 let enemyVelocity = 150;
 let highScore;
-
+let pushBack = -25;
+// score = rappedTime / 100
+//⤡
